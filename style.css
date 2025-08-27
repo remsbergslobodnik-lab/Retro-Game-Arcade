@@ -1,0 +1,625 @@
+/* GLOBAL RESET */
+body {
+    font-family: 'VT323', monospace;
+    background: #0d0d0d;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+header {
+    background: #111;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #ff00ff;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.4rem;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    animation: flicker 2s infinite alternate;
+}
+
+/* NAVIGATION */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 1rem;
+    text-shadow: 0 0 8px #00ffff;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffff00;
+    text-shadow: 0 0 10px #ffff00;
+}
+
+/* MOBILE HAMBURGER */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 26px;
+    height: 3px;
+    background: #00ffff;
+    transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 1rem;
+        border: 2px solid #ff00ff;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 8rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://via.placeholder.com/1920x500?text=Retro+Arcade+Background') no-repeat center/cover;
+    border-bottom: 3px solid #00ffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.hero h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
+    color: #ffff00;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px #ff00ff, 0 0 30px #ff00ff;
+    animation: glow 2s infinite alternate;
+}
+
+.hero p {
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #cccccc;
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+/* ABOUT US SECTION */
+.about-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 3px solid #00ffff;
+    border-bottom: 3px solid #ff00ff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.about-section p {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #cccccc;
+    max-width: 800px;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+/* GAMES SECTION */
+.games-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 3px solid #ff00ff;
+    border-bottom: 3px solid #00ffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.games-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 1.5rem;
+}
+
+/* GAME CARDS */
+.game-card {
+    background: #1a1a1a;
+    border-radius: 14px;
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    animation: floaty 4s ease-in-out infinite;
+    text-align: center;
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 22px rgba(255, 0, 255, 0.6);
+}
+
+.game-header {
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    color: #000;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.game-desc {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    color: #cccccc;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* PLAY BUTTON */
+.play-btn {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    font-family: 'Press Start 2P', cursive;
+    background: #00ffff;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 14px #00ffff;
+    transition: 0.3s;
+}
+
+.play-btn:hover {
+    background: #ffff00;
+    box-shadow: 0 0 16px #ffff00;
+}
+
+/* LEADERBOARD SECTION */
+.leaderboard-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 3px solid #00ffff;
+    border-bottom: 3px solid #ff00ff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaderboard-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.leaderboard {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border: 2px solid #ff00ff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.leaderboard h3 {
+    color: #ffff00;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    text-shadow: 0 0 8px #ffff00;
+}
+
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.8rem 0;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.leaderboard-name {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.leaderboard-score {
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+    font-weight: bold;
+}
+
+/* CONTACT US SECTION */
+.contact-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 3px solid #ff00ff;
+    border-bottom: 3px solid #00ffff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.contact-section p {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #cccccc;
+    max-width: 800px;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.contact-form {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border: 2px solid #ff00ff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: #ffff00;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 8px #ffff00;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00ffff;
+    border-radius: 6px;
+    color: #ffffff;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff00ff;
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.submit-btn {
+    background: #00ffff;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 12px #00ffff;
+    transition: 0.3s;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: #ffff00;
+    box-shadow: 0 0 15px #ffff00;
+}
+
+/* FAQ SECTION */
+.faq-section {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: rgba(0, 0, 0, 0.85);
+    border-top: 3px solid #00ffff;
+    border-bottom: 3px solid #ff00ff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-section h2 {
+    font-family: 'Press Start 2P', cursive;
+    color: #00ffff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 12px #00ffff;
+}
+
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 2rem;
+}
+
+.faq-item {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #ff00ff;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    color: #000;
+    padding: 1.2rem;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:hover {
+    background: linear-gradient(90deg, #ffff00, #ff00ff);
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.faq-question.active::after {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 1.2rem;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #cccccc;
+    line-height: 1.8;
+    margin: 0;
+    text-align: left;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.modal iframe {
+    width: 90%;
+    height: 80%;
+    border: 3px solid #00ffff;
+    box-shadow: 0 0 20px #ff00ff;
+    border-radius: 8px;
+}
+
+.close-btn {
+    margin-top: 1.2rem;
+    background: #ff00ff;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: 0 0 12px #ff00ff;
+}
+
+.close-btn:hover {
+    background: #ffff00;
+    box-shadow: 0 0 15px #ffff00;
+}
+
+/* ANIMATIONS */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff00ff; }
+    to { text-shadow: 0 0 20px #ffff00, 0 0 40px #ff00ff; }
+}
+
+@keyframes floaty {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .hero {
+        padding: 6rem 1.5rem;
+        min-height: 50vh;
+    }
+    
+    .about-section,
+    .games-section,
+    .leaderboard-section,
+    .contact-section,
+    .faq-section {
+        padding: 4rem 1.5rem;
+    }
+    
+    .hero h1,
+    .about-section h2,
+    .games-section h2,
+    .leaderboard-section h2,
+    .contact-section h2,
+    .faq-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .faq-question {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+    
+    .faq-answer.active {
+        padding: 1rem;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .hero {
+        padding: 5rem 1.5rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .about-section {
+        padding: 4rem 1.5rem;
+    }
+    .about-section h2 {
+        font-size: 1.6rem;
+    }
+    .about-section p {
+        font-size: 0.95rem;
+    }
+}
